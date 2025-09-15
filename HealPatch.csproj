@@ -1,0 +1,462 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Product>HealPatch</Product>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>HealPatch</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\</OutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <PackageId>HealPatch</PackageId>
+  </PropertyGroup>
+  <!-- Unity DLL References -->
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>libs\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>libs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>libs\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>libs\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Unity Modules -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>libs\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>libs\UnityEngine.AIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>libs\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>libs\UnityEngine.AudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Add more Unity modules as needed -->
+  </ItemGroup>
+  <!-- BepInEx References -->
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>libs\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="BepInEx.Harmony">
+      <HintPath>libs\BepInEx.Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="BepInEx.Preloader">
+      <HintPath>libs\BepInEx.Preloader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Harmony References -->
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>libs\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="HarmonyXInterop">
+      <HintPath>libs\HarmonyXInterop.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Other Library References -->
+  <ItemGroup>
+    <Reference Include="PlayMaker">
+      <HintPath>libs\PlayMaker.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Coffee.SoftMaskForUGUI">
+      <HintPath>libs\Coffee.SoftMaskForUGUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ConditionalExpression">
+      <HintPath>libs\ConditionalExpression.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="GalaxyCSharp">
+      <HintPath>libs\GalaxyCSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>libs\Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.UnityConverters">
+      <HintPath>libs\Newtonsoft.Json.UnityConverters.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SharpDX">
+      <HintPath>libs\SharpDX.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SharpDX.DirectInput">
+      <HintPath>libs\SharpDX.DirectInput.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- System References from libs -->
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>libs\System.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>libs\System.Collections.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>libs\System.ComponentModel.Composition.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Configuration.Install">
+      <HintPath>libs\System.Configuration.Install.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <HintPath>libs\System.Configuration.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Console">
+      <HintPath>libs\System.Console.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>libs\System.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>libs\System.Data.DataSetExtensions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>libs\System.Data.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>libs\System.Drawing.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <HintPath>libs\System.EnterpriseServices.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Globalization">
+      <HintPath>libs\System.Globalization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <HintPath>libs\System.IO.Compression.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>libs\System.IO.Compression.FileSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>libs\System.Linq.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>libs\System.Net.Http.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <HintPath>libs\System.Numerics.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Reflection">
+      <HintPath>libs\System.Reflection.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Extensions">
+      <HintPath>libs\System.Reflection.Extensions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Resources.ResourceManager">
+      <HintPath>libs\System.Resources.ResourceManager.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>libs\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Handles">
+      <HintPath>libs\System.Runtime.Handles.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>libs\System.Runtime.InteropServices.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap">
+      <HintPath>libs\System.Runtime.Serialization.Formatters.Soap.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>libs\System.Runtime.Serialization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>libs\System.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Security">
+      <HintPath>libs\System.Security.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Internals">
+      <HintPath>libs\System.ServiceModel.Internals.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.ServiceProcess">
+      <HintPath>libs\System.ServiceProcess.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <HintPath>libs\System.Transactions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>libs\System.Windows.Forms.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>libs\System.Xml.Linq.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>libs\System.Xml.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>libs\netstandard.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- No embedded resources currently configured -->
+  <!-- Team Cherry References -->
+  <ItemGroup>
+    <Reference Include="TeamCherry.BuildBot">
+      <HintPath>libs\TeamCherry.BuildBot.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TeamCherry.Cinematics">
+      <HintPath>libs\TeamCherry.Cinematics.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TeamCherry.Localization">
+      <HintPath>libs\TeamCherry.Localization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TeamCherry.NestedFadeGroup">
+      <HintPath>libs\TeamCherry.NestedFadeGroup.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TeamCherry.SharedUtils">
+      <HintPath>libs\TeamCherry.SharedUtils.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TeamCherry.Splines">
+      <HintPath>libs\TeamCherry.Splines.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TeamCherry.TK2D">
+      <HintPath>libs\TeamCherry.TK2D.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Input and UI Modules -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>libs\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputForUIModule">
+      <HintPath>libs\UnityEngine.InputForUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>libs\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>libs\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Rendering and Graphics Modules -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>libs\UnityEngine.DirectorModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>libs\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>libs\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>libs\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>libs\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>libs\UnityEngine.VideoModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>libs\UnityEngine.WindModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Text and Font Modules -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>libs\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>libs\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>libs\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Physics and Collision Modules -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>libs\UnityEngine.Physics2DModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>libs\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Network and Web Modules -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>libs\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>libs\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>libs\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Utility Modules -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>libs\UnityEngine.GridModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HierarchyCoreModule">
+      <HintPath>libs\UnityEngine.HierarchyCoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>libs\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>libs\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PropertiesModule">
+      <HintPath>libs\UnityEngine.PropertiesModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>libs\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>libs\UnityEngine.TilemapModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Platform Integrations -->
+  <ItemGroup>
+    <Reference Include="XGamingRuntime">
+      <HintPath>libs\XGamingRuntime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>libs\com.rlabrecque.steamworks.net.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Unity Addressables Modules -->
+  <ItemGroup>
+    <Reference Include="Unity.Addressables">
+      <HintPath>libs\Unity.Addressables.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>libs\Unity.ResourceManager.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Unity Burst Modules -->
+  <ItemGroup>
+    <Reference Include="Unity.Burst">
+      <HintPath>libs\Unity.Burst.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>libs\Unity.Burst.Unsafe.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Math and Profiling Modules -->
+  <ItemGroup>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>libs\Unity.Mathematics.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Profiling.Core">
+      <HintPath>libs\Unity.Profiling.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Additional System References -->
+  <ItemGroup>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>libs\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- Other System References (no specific path) -->
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+</Project>
