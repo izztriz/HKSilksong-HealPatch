@@ -32,7 +32,10 @@ namespace HealPatch
                 
                 instance.silk = newSilk;
                 
-                if (amount > 0) lastSilkValue = newSilk;
+                if (amount > 0) 
+                {
+                    lastSilkValue = newSilk;
+                }
             }
             catch (Exception ex)
             {
@@ -70,11 +73,12 @@ namespace HealPatch
             {
                 if (missingHealth <= 0) return;
                 
-                int newSilk = __instance.silkMax - missingHealth;
-                newSilk = Math.Max(0, newSilk); 
-
-                __instance.silk = newSilk;
-                lastSilkValue = newSilk;
+                int silkAfterHeal = lastSilkValue - missingHealth;
+                
+                silkAfterHeal = Math.Max(0, Math.Min(silkAfterHeal, __instance.silkMax));
+                
+                __instance.silk = silkAfterHeal;
+                lastSilkValue = silkAfterHeal;
                 
                 EventRegister.SendEvent(EventRegisterEvents.SilkCursedUpdate);
                 
